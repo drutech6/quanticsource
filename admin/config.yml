@@ -1,0 +1,23 @@
+backend:
+  name: github
+  repo: your-username/your-repo-name # <--- REQUIRED: Replace with your actual GitHub path
+  branch: main # Or 'master', whichever branch your site is built from
+# ... the rest of your configuration remains the same
+  
+# The folder where uploaded files (like images) should be saved
+media_folder: 'assets/uploads' 
+# The directory where the static files are hosted on your site (relative to the site root)
+public_folder: '/assets/uploads' 
+
+# Define the content collections for your Jekyll site
+collections:
+  - name: 'posts' # Used in routes, e.g., /admin/collections/posts
+    label: 'Posts' # Label in the CMS UI
+    folder: '_posts/' # Path to your Jekyll posts
+    create: true # Allow users to create new posts
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}' # Jekyll's required filename format
+    fields: # The frontmatter fields for your posts
+      - {label: 'Layout', name: 'layout', widget: 'hidden', default: 'post'}
+      - {label: 'Title', name: 'title', widget: 'string'}
+      - {label: 'Publish Date', name: 'date', widget: 'datetime'}
+      - {label: 'Body', name: 'body', widget: 'markdown'}
